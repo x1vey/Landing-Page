@@ -2,213 +2,388 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Your Offer – Book a Call</title>
+  <title>Book a Call – Your Name</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Fonts for modern look -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #ff3366;
-      --secondary: #222;
-      --bg-light: #f9f9fb;
-      --white: #fff;
+      --primary-bg: #101010;
+      --primary-text: #fff;
+      --highlight: #afff35;
+      --accent: #1a1a1a;
+      --card-bg: #181818;
+      --border: #222;
+      --button-bg: #afff35;
+      --button-text: #101010;
+      --button-hover: #d2ff90;
     }
     body {
+      background: var(--primary-bg);
+      color: var(--primary-text);
       font-family: 'Open Sans', Arial, sans-serif;
       margin: 0;
-      background: var(--bg-light);
-      color: var(--secondary);
+      padding: 0;
+      line-height: 1.6;
     }
+    a, button { font-family: 'Montserrat', sans-serif; }
+    .section {
+      padding: 56px 0 40px 0;
+    }
+    .container {
+      width: 92%;
+      max-width: 1020px;
+      margin: 0 auto;
+    }
+    /* HERO SECTION */
     .hero {
-      position: relative;
-      min-height: 80vh;
-      background: url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      min-height: 72vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      background: var(--accent);
       text-align: center;
-      color: var(--white);
-    }
-    .hero-overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(30,30,40,0.62);
-      z-index: 1;
-    }
-    .hero-content {
       position: relative;
-      z-index: 2;
-      max-width: 670px;
-      margin: 0 auto;
-      padding: 48px 18px;
+      padding-top: 80px;
+      padding-bottom: 60px;
     }
     .hero-title {
       font-family: 'Montserrat', sans-serif;
       font-size: 2.7rem;
       font-weight: 700;
-      margin-bottom: 18px;
       letter-spacing: -1.5px;
-      line-height: 1.1;
+      color: var(--primary-text);
+      margin-bottom: 18px;
+      text-shadow: 0 2px 16px #0006;
+    }
+    .hero-highlight {
+      color: var(--highlight);
+      font-weight: 700;
     }
     .hero-subtitle {
-      font-size: 1.25rem;
+      font-size: 1.18rem;
       font-weight: 400;
-      margin-bottom: 34px;
-      color: #ffecf1;
-      line-height: 1.6;
+      color: #e6ffe6;
+      margin-bottom: 38px;
+      margin-top: 0;
+      text-shadow: 0 1px 8px #0004;
     }
     .cta-btn {
       display: inline-block;
-      background: var(--primary);
-      color: var(--white);
-      font-family: 'Montserrat', sans-serif;
+      background: var(--button-bg);
+      color: var(--button-text);
       font-weight: 700;
-      font-size: 1.22rem;
-      padding: 18px 42px;
+      font-size: 1.15rem;
+      padding: 17px 42px;
       border-radius: 55px;
       text-decoration: none;
-      box-shadow: 0 4px 28px rgba(255,51,102,0.12);
-      transition: background 0.18s, transform 0.15s;
       border: none;
       cursor: pointer;
+      transition: background 0.15s, color 0.15s, box-shadow 0.2s;
+      margin-top: 6px;
+      margin-bottom: 0;
+      box-shadow: 0 4px 24px #afff3522;
       letter-spacing: 0.5px;
     }
     .cta-btn:hover {
-      background: #d82e58;
-      transform: scale(1.04);
+      background: var(--button-hover);
+      color: #222;
     }
-    .testimonials-section {
-      background: var(--white);
-      padding: 62px 0 48px 0;
-      margin-top: -56px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    /* OFFER BUTTON (toggle in backend) */
+    .offer-btn {
+      display: none; /* Set to block to show the offer button */
+      background: none;
+      border: 2px solid var(--highlight);
+      color: var(--highlight);
+      padding: 10px 28px;
+      border-radius: 44px;
+      font-size: 1.07rem;
+      font-weight: 700;
+      margin-top: 18px;
+      margin-bottom: 0;
+      cursor: pointer;
+      transition: background .2s, color .2s;
     }
-    .testimonials-title {
+    .offer-btn.active {
+      display: inline-block;
+    }
+    .offer-btn:hover {
+      background: var(--highlight);
+      color: #101010;
+    }
+    /* ABOUT ME SECTION */
+    .about {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding-top: 36px;
+      padding-bottom: 36px;
+    }
+    .about-img-holder {
+      flex: 0 0 200px;
+      width: 200px;
+      height: 200px;
+      border-radius: 20px;
+      background: #262626 url('https://via.placeholder.com/200x200?text=Your+Photo') center/cover no-repeat;
+      box-shadow: 0 4px 24px #0007;
+      margin-bottom: 14px;
+      margin-right: 0;
+      border: 3px solid var(--highlight);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #888;
+    }
+    .about-content {
+      flex: 1 1 320px;
+      min-width: 220px;
+    }
+    .about-title {
       font-family: 'Montserrat', sans-serif;
-      text-align: center;
       font-size: 2rem;
       font-weight: 700;
-      margin-bottom: 30px;
-      color: var(--primary);
+      margin-bottom: 14px;
+      color: var(--primary-text);
+    }
+    .about-highlight {
+      color: var(--highlight);
+      font-weight: 700;
+    }
+    .about-quote {
+      font-size: 1.11rem;
+      color: #d1ffd1;
+      margin-top: 10px;
+      margin-bottom: 22px;
+      font-style: italic;
+    }
+    /* TESTIMONIALS */
+    .testimonials-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--highlight);
+      text-align: center;
+      margin-bottom: 34px;
       letter-spacing: -1px;
     }
-    .testimonials-slider {
+    .testimonials-list {
       display: flex;
+      gap: 32px;
       overflow-x: auto;
-      gap: 36px;
-      scroll-behavior: smooth;
-      padding: 18px;
+      padding: 14px 0 20px 0;
       justify-content: center;
-      scrollbar-width: none;
-    }
-    .testimonials-slider::-webkit-scrollbar {
-      display: none;
+      flex-wrap: wrap;
     }
     .testimonial-card {
-      background: var(--bg-light);
-      border-radius: 18px;
-      box-shadow: 0 2px 14px rgba(60,60,90,0.10);
-      min-width: 320px;
-      max-width: 340px;
-      padding: 28px 22px 22px 22px;
+      background: var(--card-bg);
+      border-radius: 15px;
+      box-shadow: 0 2px 14px #2226;
+      min-width: 280px;
+      max-width: 330px;
+      padding: 32px 22px 26px 22px;
       text-align: center;
       flex: 0 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
+      border: 1.5px solid var(--border);
     }
     .testimonial-img {
-      width: 75px;
-      height: 75px;
+      width: 66px;
+      height: 66px;
       border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 16px;
-      border: 3px solid var(--primary);
-      box-shadow: 0 2px 10px rgba(255,51,102,0.10);
-    }
-    .testimonial-quote {
-      font-size: 1.07rem;
-      color: #444;
-      margin-bottom: 15px;
-      font-style: italic;
+      background: #222 url('https://via.placeholder.com/66x66?text=Face') center/cover no-repeat;
+      margin-bottom: 13px;
+      border: 2px solid var(--highlight);
     }
     .testimonial-name {
-      font-weight: 600;
-      color: var(--secondary);
-      font-size: 1rem;
-      margin-bottom: 0;
-      margin-top: 7px;
-      letter-spacing: 0.2px;
       font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      color: var(--primary-text);
+      font-size: 1.08rem;
+      margin-bottom: 3px;
+      margin-top: 5px;
+      letter-spacing: 0.2px;
     }
-    .testimonial-role {
-      font-size: 0.96rem;
-      color: #888;
+    .testimonial-text {
+      font-size: 1.02rem;
+      color: #e7ffe7;
+      margin-bottom: 0;
+      margin-top: 10px;
+      min-height: 52px;
     }
-    @media (max-width: 700px) {
-      .hero-title { font-size: 2rem; }
-      .testimonials-slider { gap: 16px; }
-      .testimonial-card { min-width: 220px; max-width: 260px; padding: 18px 10px 18px 10px;}
+    /* WORK WITH US SECTION */
+    .work-section {
+      padding: 64px 0 56px 0;
+      background: #141414;
     }
-    @media (max-width: 500px) {
-      .hero { min-height: 60vh; }
-      .hero-title { font-size: 1.45rem; }
-      .hero-content { padding: 30px 4vw; }
-      .testimonials-section { padding: 36px 0 28px 0; }
-      .testimonials-title { font-size: 1.2rem; }
+    .work-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--highlight);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .work-content {
+      font-size: 1.14rem;
+      color: #faf9f7;
+      text-align: center;
+      margin-bottom: 32px;
+      max-width: 790px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .about {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+      .about-img-holder {
+        margin: 0 auto 12px auto;
+      }
+      .about-content {
+        width: 100%;
+      }
+    }
+    @media (max-width: 650px) {
+      .hero-title { font-size: 1.55rem; }
+      .about-title, .testimonials-title, .work-title { font-size: 1.2rem; }
+      .about-img-holder { width: 130px; height: 130px; }
+      .testimonial-card { min-width: 180px; max-width: 99vw; padding: 18px 6px 18px 6px;}
+      .testimonials-list { gap: 11px; }
+      .work-section { padding: 36px 0 32px 0; }
     }
   </style>
+  <!-- Simple JS for OFFER toggle (see instructions below) -->
+  <script>
+    // To toggle the offer, set this to true
+    const SHOW_OFFER = false; // <-- Set to true to show the special offer button
+
+    window.onload = function() {
+      if (SHOW_OFFER) {
+        document.querySelectorAll('.offer-btn').forEach(btn => btn.classList.add('active'));
+      }
+    }
+  </script>
 </head>
 <body>
+
   <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 class="hero-title">
-        Make Your Event Unforgettable – Book a Free Call
-      </h1>
+  <section class="hero section">
+    <div class="container">
+      <div class="hero-title">
+        <span class="hero-highlight">Transform Your Life</span> with a Personal Call
+      </div>
       <div class="hero-subtitle">
-        Discover how I can help you achieve your dreams or business goals.<br>
-        Get instant access to prices & availability by booking a quick, no-pressure call.
+        Take the first step toward your best self—book a free discovery call today.
       </div>
       <a href="https://calendly.com/your-scheduling-link" class="cta-btn" target="_blank">
-        Get Prices & Availability
+        Book a Free Call
       </a>
+      <button class="offer-btn">SPECIAL OFFER: Click to See Details</button>
+    </div>
+  </section>
+
+  <!-- ABOUT ME SECTION -->
+  <section class="section">
+    <div class="container about">
+      <div class="about-img-holder">
+        <!-- To change your picture:
+          1. Replace the URL below with your own image URL or upload your image to a service like Cloudinary or Imgur.
+          2. Example: background: #262626 url('https://your-image-link.jpg') center/cover no-repeat;
+          3. Hover to see the placeholder in code. -->
+      </div>
+      <div class="about-content">
+        <div class="about-title">About Me</div>
+        <div>
+          Hi! I’m <span class="about-highlight">Your Name</span>, and I specialize in helping people just like you achieve meaningful results.<br><br>
+          <span class="about-highlight">What people say:</span>
+        </div>
+        <div class="about-quote">
+          “You truly changed my perspective! I wish I’d found you sooner.”
+        </div>
+        <a href="https://calendly.com/your-scheduling-link" class="cta-btn" target="_blank">
+          Book a Free Call
+        </a>
+        <button class="offer-btn">SPECIAL OFFER: Click to See Details</button>
+      </div>
     </div>
   </section>
 
   <!-- TESTIMONIALS SECTION -->
-  <section class="testimonials-section">
-    <div class="testimonials-title">What Clients Say</div>
-    <div class="testimonials-slider">
-      <!-- Testimonial 1 -->
-      <div class="testimonial-card">
-        <img class="testimonial-img" src="https://res.cloudinary.com/demo/image/upload/sample.jpg" alt="Testimonial 1">
-        <div class="testimonial-quote">
-          “Absolutely outstanding service! The process was super smooth and the results exceeded my expectations.”
+  <section class="section">
+    <div class="container">
+      <div class="testimonials-title">Testimonials</div>
+      <div class="testimonials-list">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card">
+          <div class="testimonial-img"></div>
+          <div class="testimonial-name">Jane Smith</div>
+          <div class="testimonial-text">"A very long line of testimonial text goes here. This is just a placeholder for a real testimonial from a client."</div>
+          <a href="https://calendly.com/your-scheduling-link" class="cta-btn" style="margin-top:16px" target="_blank">
+            Book a Free Call
+          </a>
+          <button class="offer-btn" style="margin-top:10px;">SPECIAL OFFER</button>
         </div>
-        <div class="testimonial-name">Jane D.</div>
-        <div class="testimonial-role">Entrepreneur</div>
-      </div>
-      <!-- Testimonial 2 -->
-      <div class="testimonial-card">
-        <img class="testimonial-img" src="https://res.cloudinary.com/demo/image/upload/dog_sample.jpg" alt="Testimonial 2">
-        <div class="testimonial-quote">
-          “Booking was quick and easy. I felt listened to and supported at every step. Highly recommend!”
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+          <div class="testimonial-img"></div>
+          <div class="testimonial-name">John Doe</div>
+          <div class="testimonial-text">"Another long testimonial text placeholder. Replace with your own client stories or positive experiences."</div>
+          <a href="https://calendly.com/your-scheduling-link" class="cta-btn" style="margin-top:16px" target="_blank">
+            Book a Free Call
+          </a>
+          <button class="offer-btn" style="margin-top:10px;">SPECIAL OFFER</button>
         </div>
-        <div class="testimonial-name">Mark S.</div>
-        <div class="testimonial-role">Marketing Manager</div>
-      </div>
-      <!-- Testimonial 3 -->
-      <div class="testimonial-card">
-        <img class="testimonial-img" src="https://res.cloudinary.com/demo/image/upload/balloons.jpg" alt="Testimonial 3">
-        <div class="testimonial-quote">
-          “The best experience I’ve had! Professional, friendly, and truly delivered on every promise.”
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card">
+          <div class="testimonial-img"></div>
+          <div class="testimonial-name">Alex Green</div>
+          <div class="testimonial-text">"Testimonial text placeholder for a third client. Add real text here for best results!"</div>
+          <a href="https://calendly.com/your-scheduling-link" class="cta-btn" style="margin-top:16px" target="_blank">
+            Book a Free Call
+          </a>
+          <button class="offer-btn" style="margin-top:10px;">SPECIAL OFFER</button>
         </div>
-        <div class="testimonial-name">Emily R.</div>
-        <div class="testimonial-role">Event Planner</div>
       </div>
-      <!-- Add more testimonials as needed -->
     </div>
+  </section>
+
+  <!-- WORK WITH US SECTION -->
+  <section class="work-section section">
+    <div class="container">
+      <div class="work-title">Work With Us</div>
+      <div class="work-content">
+        Ready to create lasting change? Our services are designed for people over 45 who want more joy, purpose, and fulfillment.
+        <br><br>
+        Whether it’s personal coaching, practical guidance, or a supportive community—you’re in the right place.
+        <br><br>
+        <span style="color: var(--highlight); font-weight: bold;">Let’s take the next step together.</span>
+      </div>
+      <a href="https://calendly.com/your-scheduling-link" class="cta-btn" target="_blank">
+        Book a Free Call
+      </a>
+      <button class="offer-btn" style="margin-top:16px;">SPECIAL OFFER: Click to See Details</button>
+    </div>
+  </section>
+
+  <!-- INSTRUCTIONS FOR CHANGING CONTENT (remove this in production) -->
+  <section class="container" style="color:#afff35;background:#161616;padding:24px 16px;margin:40px auto 12px auto;border-radius:12px;max-width:700px;">
+    <h3 style="color:#afff35;">How to Customize This Page</h3>
+    <ul style="font-size:1.08rem;line-height:1.75;">
+      <li>To <b>change any picture</b>: Find <code>background: url('...')</code> in the HTML and replace the URL with your image link.</li>
+      <li>To <b>change the copy</b>: Just edit the text between the tags in each section (e.g., <code>&lt;div&gt;About Me&lt;/div&gt;</code>).</li>
+      <li>To <b>change the Book a Call link</b>: Replace the Calendly URL in <code>href="https://calendly.com/your-scheduling-link"</code> with your booking page.</li>
+      <li>To <b>toggle the Special Offer button</b>: At the top of the HTML, set <code>SHOW_OFFER = true</code> or <code>false</code> in the script.</li>
+      <li>To <b>add more testimonials</b>: Copy and paste one of the <code>.testimonial-card</code> blocks inside <code>.testimonials-list</code>.</li>
+      <li>Delete this green instructions section when you’re ready to go live!</li>
+    </ul>
   </section>
 </body>
 </html>
