@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book a Call with Me</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f7f7fb;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 2.5em 2em 2em 2em;
+      border-radius: 14px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+    h1 {
+      margin-top: 0;
+      font-size: 2.2em;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    .offer-text {
+      margin: 18px 0 32px 0;
+      font-size: 1.16em;
+      color: #444;
+    }
+    .testimonials {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .testimonial-img {
+      width: 105px;
+      height: 105px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 2px solid #e6e6ee;
+      box-shadow: 0 1px 7px rgba(140,140,140,0.10);
+      background: #ececf2;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 16px 38px;
+      font-size: 1.1em;
+      color: #fff;
+      background: #2d71f7;
+      border: none;
+      border-radius: 7px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 2px 12px rgba(45,113,247,0.14);
+      transition: background 0.18s;
+      cursor: pointer;
+    }
+    .cta-btn:hover {
+      background: #1953bb;
+    }
+    @media (max-width: 500px) {
+      .container { padding: 1em; }
+      .testimonials { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Unlock Your Potential – Book a Call!</h1>
+    <div class="offer-text">
+      Ready to take action? Let’s connect and discover how I can help you reach your goals.<br>
+      Schedule a free 20-minute consultation with me today!
+    </div>
+
+    <div class="testimonials">
+      <img class="testimonial-img" src="https://res.cloudinary.com/demo/image/upload/sample.jpg" alt="Testimonial 1">
+      <img class="testimonial-img" src="https://res.cloudinary.com/demo/image/upload/dog_sample.jpg" alt="Testimonial 2">
+      <img class="testimonial-img" src="https://res.cloudinary.com/demo/image/upload/balloons.jpg" alt="Testimonial 3">
+    </div>
+
+    <a class="cta-btn" href="https://calendly.com/your-scheduling-link" target="_blank">
+      Book Your Free Call Now
+    </a>
+  </div>
+</body>
+</html>
